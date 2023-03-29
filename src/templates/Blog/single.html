@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>{%if post.meta_title%} {{post.meta_title}} {%else%} {{post.title}} {%endif%}</title>
+
+<meta name="description" content={%if post.meta_description%} {{post.meta_description}} {%else%} {{post.content|truncatechars:200}} {%endif%} />
+{% endblock head %}
+
+{% block content %}
+
+<div class="container my-3">
+    <div class="row py-3">
+        <div class="col-md-9">
+            <h1 class="h3">{{post.title}}</h1>
+
+            <!-- BraedCumbs -->
+              
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a class="text-decoration-none text-primary" href="{% url 'home' %}">Home</a></li>
+                  <li class="breadcrumb-item"><a href="#" class="text-decoration-none text-primary">{{post.category.title}}</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">{{post.title}}</li>
+                </ol>
+              </nav>
+              <hr>
+              <div class="my-3">
+                <img src="{{post.featured.url}}" alt="{{post.title}}" width="500" height="300" style="margin-bottom: 20px;">
+                {{post.content|safe}}
+              </div>
+              Last Updated: {{post.updated}}
+
+              {% load social_share %}
+              {% post_to_twitter "Alien Blog: Check it out!" object_or_url "Post to Twitter" %}
+              {% post_to_facebook object_or_url "Post to Facebook" %}
+              {% post_to_linkedin object_or_url "Post to Linkedin" %}
+              
+              <!-- Comment Section -->
+              <br/><br/>
+
+              <h2>Comments...</h2>
+              <br/>
+              {% if not post.comments.all %}
+                  No Comments Yet...<a href="{% url 'add_comment' %}">Add One</a>
+              {% else %}
+              <a href="{% url 'add_comment' %}">Add Comment</a>
+              <br/><br/>
+                  {% for comment in post.comments.all %}
+                  <strong>
+                    {{ comment.name }} - {{ comment.date_added }}
+                  </strong>
+                  <br/>
+                  {{ comment.body }}
+                  </br>
+                  
+                  {% endfor %}
+                  <a href="{% url 'add_comment' %}">Add Comment</a>
+              {% endif %}
+              <br/><br/>
+
+
+
+
+        </div>
+        <div class="col-md-3">Sidebar</div>
+    </div>
+</div>
+
+{% endblock content%}

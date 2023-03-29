@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title> Home Page of Alien Web </title>
+{% endblock head %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body {
+			font-family: 'Roboto', sans-serif;
+			background-color: #f5f5f5;
+			color: #333;
+			line-height: 1.5;
+			padding: 0;
+			margin: 0;
+		}
+
+		.header {
+			text-align: center;
+            margin-upper: 40px;
+			margin-bottom: 50px;
+		}
+
+		.header h1 {
+			font-size: 48px;
+            margin-bottom: 25px;
+			line-height: 1.2;
+		}
+
+		.header p {
+			font-size: 18px;
+			margin: 0;
+			color: #666;
+		}
+
+		.features {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+
+		.feature {
+			flex-basis: calc(33.33% - 20px);
+			margin: 10px;
+			text-align: center;
+			padding: 20px;
+			background-color: #fff;
+			border-radius: 5px;
+			box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.feature h2 {
+			font-size: 24px;
+			margin: 0 0 10px 0;
+			color: #333;
+		}
+
+		.feature p {
+			font-size: 16px;
+			margin: 0;
+			color: #666;
+		}
+
+		.cta {
+			text-align: center;
+			margin-top: 40px;
+		}
+
+		.cta a {
+			display: inline-block;
+			padding: 10px 20px;
+			background-color: #333;
+			color: #fff;
+			font-size: 20px;
+			font-weight: 500;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			text-decoration: none;
+			border-radius: 5px;
+			transition: background-color 0.3s ease;
+		}
+
+		.cta a:hover {
+			background-color: #666;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container my-5 py-3">
+		<header class="header">
+			<h1>Alien's Home</h1>
+			<p>Even if the aliens are short, dour, and mentally obsessed—if they're here, I want to know about them.</p>
+		</header>
+    </div>
+		<div class="features">
+			<div class="feature">
+				<h2>Human</h2>
+				<p>It's hard being Human </p>
+			</div>
+			<div class="feature">
+				<h2>Alien</h2>
+				<p>Hello World !</p>
+            </div>
+        </div>
+
+
+
+{% endblock content %}
